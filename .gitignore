@@ -1,3 +1,4 @@
 .env
 pipeline_output/staging/
 pipeline_output/alerts.log
+__pycache__/

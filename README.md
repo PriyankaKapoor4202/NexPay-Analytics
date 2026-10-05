@@ -57,6 +57,23 @@ Ask it anything:
 6. Every answer includes a specific recommendation
 
 ---
+## Data Pipeline (Apache Airflow)
+
+The metrics behind the dashboard are produced by an Airflow DAG, `nexpay_daily_pipeline` (see `dags/nexpay_pipeline.py`), scheduled to run daily.
+
+extract → validate_and_clean → compute_metrics → publish_summary
+
+- **extract**: loads transaction, campaign, and customer data and fails fast if any source is empty
+- **validate_and_clean**: removes duplicates, missing values, and invalid amounts; fails the run if more than 5% of rows are dropped, so bad source data never reaches the metrics
+- **compute_metrics**: revenue and approval rate by payment channel, ROAS by campaign, churn risk by customer segment
+- **publish_summary**: verifies every output exists and writes a run summary of the key findings
+
+**Reliability:** each task retries twice with a 1-minute delay, and a failure callback logs an alert when retries are exhausted. Downstream tasks only run when upstream tasks succeed.
+
+Run it locally:
+
+    pip install -r requirements-pipeline.txt
+    airflow dags test nexpay_daily_pipeline
 
 ## Tech Stack
 
@@ -66,6 +83,7 @@ Ask it anything:
 - **Pandas / NumPy** — data processing and aggregation
 - **Plotly** — interactive charts and visualizations
 - **python-dotenv** — environment variable management
+- **Apache Airflow**: pipeline orchestration, scheduling, retries, and failure alerts
 
 ---
 
