@@ -58,6 +58,9 @@ Ask it anything:
 
 ---
 ## Data Pipeline (Apache Airflow)
+![Airflow DAG graph: all four tasks succeeding](images/airflow_graph.png)
+
+![Airflow run history: successful runs, plus a deliberate failure test where downstream tasks were correctly blocked](images/airflow_grid.png)
 
 The metrics behind the dashboard are produced by an Airflow DAG, `nexpay_daily_pipeline` (see `dags/nexpay_pipeline.py`), scheduled to run daily.
 
