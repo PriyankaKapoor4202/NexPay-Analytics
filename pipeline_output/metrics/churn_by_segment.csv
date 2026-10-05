@@ -1,0 +1,6 @@
+segment,customers,avg_churn_risk,avg_spend
+Premium,10038,0.498,12659.822
+Student,10062,0.497,2515.938
+Enterprise,9948,0.496,20285.421
+Standard,9972,0.496,5085.456
+Business,9980,0.491,10052.57

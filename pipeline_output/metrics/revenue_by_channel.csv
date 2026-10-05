@@ -1,0 +1,6 @@
+channel,transactions,volume,net_revenue,approval_rate
+Buy Now Pay Later,20127,2321804.07,50681.55,0.67
+Credit Card,19961,2236342.47,48741.3,0.66
+ACH Transfer,20068,2230385.23,48303.67,0.67
+Digital Wallet,19891,2222993.48,48058.24,0.67
+Debit Card,19953,2213342.2,47917.1,0.67
